@@ -2,11 +2,8 @@ let button = document.querySelector('.button');
 let heading = document.querySelector('h1');
 let list = document.querySelector('ol');
 let para = document.querySelector('p');
-let seconds;
-let timer;
-let yourWork;
-let hour;
-let minutes;
+let seconds,time,yourWork,hour,minutes;
+
 button.addEventListener('click', () => {
 
   if (button.textContent === 'start') {
@@ -17,7 +14,7 @@ button.addEventListener('click', () => {
     if (yourWork !== null && yourWork !== '') {
       button.textContent = 'Done';
       para.textContent = yourWork;
-      heading.textContent = `${hour}hr : ${minutes}min : ${seconds}sec`;
+      heading.textContent = `0${hour}hr : 0${minutes}min : 0${seconds}sec`;
       timer = setInterval(() => {
 
         seconds++;
@@ -31,7 +28,7 @@ button.addEventListener('click', () => {
           seconds = 0;
           minutes++;
         }
-        if (minutes === 59) {
+        if (minutes === 59) {gi
           minutes = 0;
           hour++;
         };
@@ -42,7 +39,7 @@ button.addEventListener('click', () => {
   }else {
     list.insertAdjacentHTML("beforeend", `<li style='margin: 1rem 1rem 1rem 0;' class='notification is-primary'> ${yourWork} - ${hour}:${minutes}:${seconds}</li>`)
     button.textContent = 'start';
-    heading.textContent = 'Well Done';
+    heading.textContent = 'You Did Well!';
     clearInterval(timer);
   }
 });
